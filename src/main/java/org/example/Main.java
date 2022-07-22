@@ -1,7 +1,27 @@
 package org.example;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        System.out.println("Hello world! test 1");
+        ChromeOptions chromeOptions = new ChromeOptions();
+        //chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--no-sandbox");
+        WebDriver driver = new ChromeDriver(chromeOptions);
+        driver.get("https://google.com");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException exception) {
+            System.out.println("Wait time over");
+        }
+        if (driver.getPageSource().contains("I'm Feeling Lucky")) {
+            System.out.println("Pass");
+        } else {
+            System.out.println("Fail");
+        }
+        driver.quit();
     }
 }
