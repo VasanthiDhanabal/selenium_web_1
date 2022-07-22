@@ -14,8 +14,9 @@ public class Main {
         driver.get("https://google.com");
         try {
             Thread.sleep(1000);
-        } catch (InterruptedException exception) {
             System.out.println("Wait time over");
+        } catch (InterruptedException exception) {
+            System.out.println("Thread is interrupted during sleep");
         }
         if (driver.getPageSource().contains("I'm Feeling Lucky")) {
             System.out.println("Pass");
